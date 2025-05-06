@@ -7,3 +7,4 @@ one_hot_target = torch.tensor([1, 0, 0])
 
 criterion = CrossEntropyLoss()
 print(criterion(scores.double(), one_hot_target.double()))
+
