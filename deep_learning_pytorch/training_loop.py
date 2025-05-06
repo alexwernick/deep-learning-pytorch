@@ -62,4 +62,5 @@ for epoch in range(num_epochs):
         loss = criterion(pred, target.view(-1, 1))
         # compute gradients
         loss.backward()
+        # Update the model's parameters
         optimizer.step()
