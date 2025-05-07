@@ -1,7 +1,7 @@
 # deep-learning-pytorch
-A repo containing notes from [Introduction to Deep Learning with PyTorch](https://app.datacamp.com/learn/courses/introduction-to-deep-learning-with-pytorch) on DataCamp
+A repo containing notes from [Introduction to Deep Learning with PyTorch](https://app.datacamp.com/learn/courses/introduction-to-deep-learning-with-pytorch) and [Intermediate Deep Learning with PyTorch](https://app.datacamp.com/learn/courses/intermediate-deep-learning-with-pytorch) on DataCamp
 
-## Summary
+## Introduction
 
 - Chapter 1
   - Discovered deep learning
@@ -22,3 +22,6 @@ A repo containing notes from [Introduction to Deep Learning with PyTorch](https:
   - Strategies to improve your model
   - Reduced overfitting
   - Evaluated model performance
+
+## Intermediate
+TDOD
