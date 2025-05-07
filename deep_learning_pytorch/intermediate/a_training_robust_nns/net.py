@@ -1,4 +1,5 @@
 import torch.nn as nn
+import torch.nn.init as init
 
 class Net(nn.Module):
     def __init__(self):
@@ -6,6 +7,15 @@ class Net(nn.Module):
         self.fc1 = nn.Linear(9, 16)
         self.fc2 = nn.Linear(16, 8)
         self.fc3 = nn.Linear(8, 1)
+
+        # adding He/Kaiming initialization
+        # see vanishing_and_exploding_gradients.py for justification
+        init.kaiming_uniform_(self.fc1.weight)
+        init.kaiming_uniform_(self.fc2.weight)
+        init.kaiming_uniform_(
+            self.fc3.weight,
+            nonlinearity="sigmoid",
+        )
         
     def forward(self, x):
         x = nn.functional.relu(self.fc1(x))
