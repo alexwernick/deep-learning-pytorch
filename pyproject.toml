@@ -11,6 +11,8 @@ torch = "^2.7.0"
 numpy = "^2.2.5"
 pandas = "^2.2.3"
 torchmetrics = "^1.7.1"
+torchvision = "^0.22.0"
+matplotlib = "^3.10.3"
 
 
 [build-system]

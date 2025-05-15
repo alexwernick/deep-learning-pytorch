@@ -166,3 +166,7 @@ cython_debug/
 
 # Ignore specific VS Code workspace files
 *.code-workspace
+
+# clouds data
+clouds_test/
+clouds_train/
