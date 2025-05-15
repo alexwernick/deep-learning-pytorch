@@ -87,6 +87,8 @@ Averaging multi-class metrics
 
 '''
 
+# if you want metrics per class you need to set 
+# average=None
 metric_precision = Precision(
     task="multiclass", num_classes=7, average="macro"
 )
