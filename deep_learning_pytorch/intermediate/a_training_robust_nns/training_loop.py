@@ -40,7 +40,7 @@ optimizer = optim.SGD(net.parameters(), lr=0.01)
 
 # Iterate over epochs and training batches
 for epoch in range(2):
-    for features, labels in dataloader_train:
+    for batch_idx, (features, labels) in enumerate(dataloader_train):
         # Clear gradients
         optimizer.zero_grad()
         
@@ -57,6 +57,7 @@ for epoch in range(2):
         
         # Optimizer's step: update params
         optimizer.step()
+        print(f"Epoch [{epoch + 1}/2], Batch [{batch_idx + 1}/{len(dataloader_train)}], Loss: {loss.item():.4f}")
 
 
 # Model evaluation
