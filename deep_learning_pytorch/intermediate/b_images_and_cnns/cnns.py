@@ -43,7 +43,7 @@ class Net(nn.Module):
             # 3 inputs corresponding to RGB
             # We use filters of 3x3 set by the kernel size argument
             # Zero-padding set to 1
-            nn.Conv2d(3, 32, kernel_size=3, padding=1).
+            nn.Conv2d(3, 32, kernel_size=3, padding=1),
             nn.ELU(),
             # Max pooling halves feature map in height and width
             nn.MaxPool2d(kernel_size=2),

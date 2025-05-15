@@ -93,7 +93,7 @@ def organize_images(csv_file_path, source_images_dir, target_output_dir, id_colu
         # Get the image filename from the specified ID column.
         # Convert to string in case pandas interprets it as a number.
         image_filename = str(row[id_column])
-        image_label = str(row[id_column])
+        image_label = str(row[label_column])
 
 
         # Construct the full path to the source image.
