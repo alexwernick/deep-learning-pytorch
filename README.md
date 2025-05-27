@@ -24,4 +24,14 @@ A repo containing notes from [Introduction to Deep Learning with PyTorch](https:
   - Evaluated model performance
 
 ## Intermediate
-TDOD
+- Chapter 1
+  - Training Robust Neural Networks
+
+- Chapter 2
+  - Images & Convolutional Neural Networks
+
+- Chapter 3
+  - Sequences & Recurrent Neural Networks
+
+- Chapter 4
+  - Multi-Input & Multi-Output Architectures
