@@ -34,30 +34,39 @@ Calculate dims of classifier input:
 - max pooling dims = 64 x 16 x 16 # halves height and width
 
 '''
-from deep_learning_pytorch.intermediate.c_.cnns import Net
+from deep_learning_pytorch.intermediate.c_sequences_and_rnns.lstm_and_gru import LSTMNet
 
 import torch.nn as nn
+import torch.optim as optim
 
-class Net(nn.Module):
-    def __init__(self, num_classes):
-        super().__init__()
-        self.feature_extractor = nn.Sequential(
-            # 3 inputs corresponding to RGB
-            # We use filters of 3x3 set by the kernel size argument
-            # Zero-padding set to 1
-            nn.Conv2d(3, 32, kernel_size=3, padding=1),
-            nn.ELU(),
-            # Max pooling halves feature map in height and width
-            nn.MaxPool2d(kernel_size=2),
-            nn.Conv2d(32, 64, kernel_size=3, padding=1),
-            nn.ELU(),
-            nn.MaxPool2d(kernel_size=2),
-            nn.Flatten()
-        )
-        # See notes on how the dims of this input was calculated above
-        self.classifier = nn.Linear(64*16*16, num_classes)
+num_epochs = 1
+net = LSTMNet()
+criterion = nn.MSELoss()
+optimizer = optim.Adam(
+    net.parameters(), lr=0.001
+)
 
-    def forward(self, x):
-        x = self.feature_extractor(x)
-        x = self.classifier(x)
-        return x
+for epoch in range(num_epochs):
+    for seqs, labels in dataloader_train:
+        seqs = seqs.view(32, 96, 1)
+        outputs = net(seqs)
+        loss = criterion(outputs, labels)
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+
+# evaluation loop
+import torch
+from torchmetrics import MeanSquaredError
+mse = MeanSquaredError()
+
+net.eval()
+
+with torch.no_grad():
+    for seqs, labels in test_loader:
+        seqs = seqs.view(32, 96, 1)
+        outputs = net(seqs).squeeze()
+        mse(outputs, labels)
+
+print(f"Test MSE: {mse.compute()}")
