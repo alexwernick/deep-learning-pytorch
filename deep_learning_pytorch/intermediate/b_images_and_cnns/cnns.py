@@ -34,6 +34,8 @@ Calculate dims of classifier input:
 - max pooling dims = 64 x 16 x 16 # halves height and width
 
 '''
+from deep_learning_pytorch.intermediate.c_.cnns import Net
+
 import torch.nn as nn
 
 class Net(nn.Module):

@@ -170,3 +170,6 @@ cython_debug/
 # clouds data
 clouds_test/
 clouds_train/
+
+# electrical data
+electrical_usage.csv
