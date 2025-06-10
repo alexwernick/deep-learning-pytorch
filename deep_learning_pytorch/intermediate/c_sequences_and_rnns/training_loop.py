@@ -21,6 +21,40 @@ Squeezing tensors
 - out = net(seqs).squeeze()
 
 '''
-from 
+import torch
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import torchmetrics
 
-net = LSTMNet
+from deep_learning_pytorch.intermediate.c_sequences_and_rnns.lstm_and_gru import LSTMNet
+
+
+net = LSTMNet()
+criterion = nn.MSELoss()
+optimizer = optim.Adam(
+    net.parameters(), lr=0.001
+)
+
+
+# train
+for epoch in range(num_epochs):
+    for seqs, labels in dataloader_train:
+        seqs = seqs.view(32, 96, 1)
+        outputs = net(seqs)
+        loss = criterion(outputs, labels)
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+# evaluate
+mse = torchmetrics.MeanSquaredError()
+
+net.eval()
+with torch.no_grad():
+    for seqs, labels in test_loader:
+        seqs = seqs.view(32, 96, 1)
+        outputs = net(seqs).squeeze()
+        mse(outputs, labels)
+
+print(f"Test MSE: {mse.compute()}")
